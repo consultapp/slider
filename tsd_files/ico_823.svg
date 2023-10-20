@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="120" height="120">
+<circle cx="60" cy="42" r="22" fill="#909398"/>
+<circle cx="50" cy="30" r="3" fill="#fff"/>
+<circle cx="70" cy="30" r="3" fill="#fff"/>
+<line x1="45" y1="15" x2="52" y2="23" stroke-width="3" stroke="#909398"></line>
+<line x1="75" y1="15" x2="68" y2="23" stroke-width="3" stroke="#909398"></line>
+<rect width="44" height="5" x="38" y="43" fill="#909398" />
+<rect width="44" height="43" x="38" y="43" rx="5" fill="#909398" />
+<text y="72" x="60" font-size="30px"  font-family="Arial" fill="#fff" text-anchor="middle">11</text> 
+<line x1="38" y1="42" x2="82" y2="42" stroke-width="3" stroke="#fff"></line>
+<line x1="30" y1="48" x2="30" y2="70" stroke-width="10" stroke="#909398" stroke-linecap="round"></line>
+<line x1="90" y1="48" x2="90" y2="70" stroke-width="10" stroke="#909398" stroke-linecap="round"></line>
+<line x1="70" y1="85" x2="70" y2="98" stroke-width="10" stroke="#909398" stroke-linecap="round"></line>
+<line x1="50" y1="85" x2="50" y2="98" stroke-width="10" stroke="#909398" stroke-linecap="round"></line>
+</svg>

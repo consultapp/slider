@@ -1,0 +1,10 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="145" height="145">
+  <rect width="103" height="66" x="18" y="40" rx="3" ry="3" fill="#909398" />
+    <rect width="20" height="28" x="108" y="60" rx="3" ry="3" fill="#909398" />
+  <text y="74" x="72" font-size="30" font-weight="bold0" font-family="Arial" fill="#ffffff" text-anchor="middle" >5200</text>
+    <text y="95" x="72" font-size="22" font-weight="bold0" font-family="Arial" fill="#ffffff" text-anchor="middle" >мАч</text>
+</svg>
