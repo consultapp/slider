@@ -3,7 +3,23 @@ $gray-light: #f7f4f4;
 .photoSlider {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   max-width: 363px;
+
+  &__mainPhotoWrapper {
+    position: relative;
+    background-color: gray;
+    overflow: hidden;
+    min-height: 400px;
+    &:hover {
+      cursor: url("/assets/loupe.svg"), auto;
+    }
+  }
+  &__mainPhoto {
+    position: absolute;
+    transform-origin: center;
+    // transform: scale(2) translateX(0) translateY(0);
+  }
 
   &__slider {
     position: relative;

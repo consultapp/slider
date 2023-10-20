@@ -3,7 +3,25 @@ window.addEventListener("load", () => {
   const prev = document.getElementById("prevBtn");
   const slider = document.querySelector(".photoSlider__slider");
   const images = document.querySelectorAll(".photoSlider__thumbnail");
-  const mainPhoto = document.querySelector(".photoSlider__mainPhoto img");
+  const mainPhoto = document.querySelector(".photoSlider__mainPhoto");
+  const mainPhotoWrapper = document.querySelector(
+    ".photoSlider__mainPhotoWrapper"
+  );
+
+  const mainCenterX = Math.round(mainPhotoWrapper.clientWidth / 2);
+  const mainCenterY = Math.round(mainPhotoWrapper.clientHeight / 2);
+  const maxTranslate = 75;
+  const stepX = mainCenterX / maxTranslate;
+  const stepY = mainCenterY / maxTranslate;
+
+  mainPhotoWrapper.addEventListener("mousemove", (e) => {
+    const currentX = (mainCenterX - e.layerX) / stepX;
+    const currentY = (mainCenterY - e.layerY) / stepY;
+    console.log("first", currentX, currentY);
+    mainPhoto.style.transform = `scale(2)`;
+    mainPhoto.style.transform += `translateX(${currentX}px) `;
+    mainPhoto.style.transform += `translateY(${currentY}px) `;
+  });
 
   let currentWPShift = 0;
   let current = 0;
