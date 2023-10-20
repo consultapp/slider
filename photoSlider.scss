@@ -1,0 +1,64 @@
+$gray-light: #f7f4f4;
+
+.photoSlider {
+  display: flex;
+  flex-direction: column;
+  max-width: 363px;
+
+  &__slider {
+    position: relative;
+    overflow: hidden;
+    flex-grow: 1;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+  }
+  &__thumbnailWrapper {
+    position: absolute;
+    display: flex;
+    gap: 10px;
+    transform: translateX(0);
+    transition: transform 250ms linear 0s;
+  }
+
+  &__line {
+    display: flex;
+    gap: 5px;
+    align-items: stretch;
+  }
+  &__thumbnail {
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 8px;
+    transition: border-color 0.2s ease-in;
+  }
+  &__icons {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 30px;
+    align-self: center;
+    box-sizing: border-box;
+  }
+  &__iconsWrapper {
+    display: flex;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background-color 0.4s linear;
+
+    &:hover {
+      background-color: $gray-light;
+    }
+  }
+  .photoSlider_active {
+    border: 1px solid black;
+    border-width: 1px;
+  }
+  @media screen and (min-width: 380px) {
+    &__thumbnailWrapper {
+      overflow-x: hidden;
+    }
+  }
+}
+#prevBtn {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,22 @@
+{
+  "name": "slider-fl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consultapp/slider.git"
+  },
+  "author": "Dmitry Egorov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/consultapp/slider/issues"
+  },
+  "homepage": "https://github.com/consultapp/slider#readme",
+  "devDependencies": {
+    "sass": "^1.69.4"
+  }
+}

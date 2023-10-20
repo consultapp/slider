@@ -58,9 +58,11 @@ window.addEventListener("load", () => {
   }
 
   const wp = document.querySelector(".photoSlider__thumbnailWrapper");
+
   function moveImageWrapper(shift) {
     wp.style.transform = `translateX(${shift}px)`;
   }
+
   function selectPhoto(image) {
     image.classList.add("photoSlider_active");
     mainPhoto.src = image.src;
