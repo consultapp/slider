@@ -6,7 +6,7 @@
 }
 .photoSlider__mainPhotoWrapper {
   position: relative;
-  background-color: gray;
+  background-color: white;
   overflow: hidden;
   min-height: 400px;
 }
