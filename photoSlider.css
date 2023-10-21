@@ -1,3 +1,53 @@
+.modalSlider {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 2;
+  opacity: 0;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  transform: translate(-100vw);
+  transition: opacity 500ms linear;
+}
+.modalSlider[data-open] {
+  transform: translate(0);
+  opacity: 1;
+}
+.modalSlider__closeButton {
+  position: absolute;
+  right: calc(25px + 70px);
+  top: 25px;
+}
+.modalSlider__container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modalSlider__prevBtn {
+  transform: rotate(180deg);
+}
+.modalSlider__prevBtn, .modalSlider__nextBtn {
+  min-width: 70px;
+  align-self: stretch;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  transition: background-color 0.4s linear;
+}
+.modalSlider__prevBtn:hover, .modalSlider__nextBtn:hover {
+  background-color: #f7f4f4;
+}
+.modalSlider_innerWidth {
+  width: calc(100vw - 70px - 70px);
+  max-width: 600px !important;
+  height: 600px;
+}
+
 .photoSlider {
   display: flex;
   flex-direction: column;
@@ -13,8 +63,10 @@
 .photoSlider__mainPhotoWrapper:hover {
   cursor: url("/assets/loupe.svg"), auto;
 }
-.photoSlider__mainPhoto {
+.photoSlider__mainPhotoWrapper:hover img {
   position: absolute;
+}
+.photoSlider__mainPhoto {
   transform-origin: center;
 }
 .photoSlider__slider {
@@ -69,7 +121,7 @@
   }
 }
 
-#prevBtn {
+.photoSlider__iconsWrapper.prevBtn {
   transform: rotate(180deg);
 }
 

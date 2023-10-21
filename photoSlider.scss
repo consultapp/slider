@@ -1,4 +1,8 @@
 $gray-light: #f7f4f4;
+$white: white;
+$black: black;
+
+@import "./modalSlider.scss";
 
 .photoSlider {
   display: flex;
@@ -8,15 +12,17 @@ $gray-light: #f7f4f4;
 
   &__mainPhotoWrapper {
     position: relative;
-    background-color: white;
+    background-color: $white;
     overflow: hidden;
     min-height: 400px;
     &:hover {
       cursor: url("/assets/loupe.svg"), auto;
+      & img {
+        position: absolute;
+      }
     }
   }
   &__mainPhoto {
-    position: absolute;
     transform-origin: center;
   }
 
@@ -43,7 +49,7 @@ $gray-light: #f7f4f4;
   }
   &__thumbnail {
     box-sizing: border-box;
-    border: 1px solid white;
+    border: 1px solid $white;
     border-radius: 8px;
     transition: border-color 0.2s ease-in;
   }
@@ -65,7 +71,7 @@ $gray-light: #f7f4f4;
     }
   }
   .photoSlider_active {
-    border: 1px solid black;
+    border: 1px solid $black;
     border-width: 1px;
   }
   @media screen and (min-width: 380px) {
@@ -74,6 +80,6 @@ $gray-light: #f7f4f4;
     }
   }
 }
-#prevBtn {
+.photoSlider__iconsWrapper.prevBtn {
   transform: rotate(180deg);
 }

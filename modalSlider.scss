@@ -1,0 +1,59 @@
+$btnWidth: "70px";
+
+.modalSlider {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $white;
+  z-index: 2;
+  opacity: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+
+  transform: translate(-100vw);
+  transition: opacity 500ms linear;
+
+  &[data-open] {
+    transform: translate(0);
+    opacity: 1;
+  }
+
+  &__closeButton {
+    position: absolute;
+    right: calc(25px + #{$btnWidth});
+    top: 25px;
+  }
+
+  &__container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__prevBtn {
+    transform: rotate(180deg);
+  }
+  &__prevBtn,
+  &__nextBtn {
+    min-width: #{$btnWidth};
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transition: background-color 0.4s linear;
+
+    &:hover {
+      background-color: $gray-light;
+    }
+  }
+
+  &_innerWidth {
+    width: calc((100vw) - #{$btnWidth} - #{$btnWidth});
+    max-width: 600px !important;
+    height: 600px;
+  }
+}
