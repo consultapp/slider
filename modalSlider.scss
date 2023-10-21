@@ -56,4 +56,8 @@ $btnWidth: "70px";
     max-width: 600px !important;
     height: 600px;
   }
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 }
