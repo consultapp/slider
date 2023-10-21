@@ -26,6 +26,10 @@ $btnWidth: "70px";
     position: absolute;
     right: calc(25px + #{$btnWidth});
     top: 25px;
+    transition: transform 200ms ease-out;
+    &:hover {
+      transform: rotate(90deg);
+    }
   }
 
   &__container {
@@ -48,6 +52,10 @@ $btnWidth: "70px";
 
     &:hover {
       background-color: $gray-light;
+      & svg {
+        transform: translate(10px);
+        transition: transform 200ms linear;
+      }
     }
   }
 

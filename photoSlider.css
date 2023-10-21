@@ -21,6 +21,10 @@
   position: absolute;
   right: calc(25px + 70px);
   top: 25px;
+  transition: transform 200ms ease-out;
+}
+.modalSlider__closeButton:hover {
+  transform: rotate(90deg);
 }
 .modalSlider__container {
   flex-grow: 1;
@@ -41,6 +45,10 @@
 }
 .modalSlider__prevBtn:hover, .modalSlider__nextBtn:hover {
   background-color: #f7f4f4;
+}
+.modalSlider__prevBtn:hover svg, .modalSlider__nextBtn:hover svg {
+  transform: translate(10px);
+  transition: transform 200ms linear;
 }
 .modalSlider_innerWidth {
   width: calc(100vw - 70px - 70px);
