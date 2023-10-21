@@ -124,6 +124,10 @@
 .photoSlider__iconsWrapper:hover {
   background-color: #f7f4f4;
 }
+.photoSlider__iconsWrapper:hover svg {
+  transform: translate(3px);
+  transition: transform 200ms linear;
+}
 .photoSlider .photoSlider_active {
   border: 1px solid black;
   border-width: 1px;

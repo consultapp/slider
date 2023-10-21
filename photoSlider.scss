@@ -68,6 +68,10 @@ $black: black;
 
     &:hover {
       background-color: $gray-light;
+      & svg {
+        transform: translate(3px);
+        transition: transform 200ms linear;
+      }
     }
   }
   .photoSlider_active {
