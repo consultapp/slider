@@ -4,6 +4,7 @@ $black: black;
 
 @import './modalSlider.scss';
 @import './loupe.scss';
+@import './techs.scss';
 
 .photoSlider {
   display: flex;
@@ -41,7 +42,7 @@ $black: black;
   &__thumbnailWrapper {
     position: absolute;
     display: flex;
-    gap: 10px;
+    gap: 13px;
     transform: translateX(0);
     transition: transform 250ms linear 0s;
   }
