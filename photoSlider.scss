@@ -8,8 +8,11 @@ $black: black;
 .photoSlider {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 363px;
+  // gap: 20px;
+  // max-width: 363px;
+  background-color: $gray-light;
+  border-radius: 8px;
+  border: 1px solid $gray-light;
 
   & * {
     -webkit-user-select: none;
@@ -47,6 +50,7 @@ $black: black;
     display: flex;
     gap: 5px;
     align-items: stretch;
+    margin: 10px 0 10px 0;
   }
   &__thumbnail {
     box-sizing: border-box;

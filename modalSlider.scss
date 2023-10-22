@@ -1,4 +1,4 @@
-$btnWidth: "70px";
+$btnWidth: '70px';
 
 .modalSlider {
   position: fixed;
@@ -54,10 +54,10 @@ $btnWidth: "70px";
     display: flex;
     justify-content: center;
     flex-direction: column;
-    transition: background-color 0.4s linear;
+    // transition: background-color 0.4s linear;
 
     &:hover {
-      background-color: $gray-light;
+      // background-color: $gray-light;
       & svg {
         transform: translate(10px);
         transition: transform 200ms linear;
