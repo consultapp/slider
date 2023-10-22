@@ -10,6 +10,12 @@ $black: black;
   gap: 20px;
   max-width: 363px;
 
+  & * {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
   &__mainPhotoWrapper {
     position: relative;
     background-color: $white;

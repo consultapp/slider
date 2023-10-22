@@ -14,6 +14,10 @@ function initSlider(id) {
   let activeCurrent = images[current];
 
   next.forEach((item) => {
+    item.addEventListener("dblclick", (event) => {
+      event.stopPropagation();
+    });
+
     item.addEventListener("click", () => {
       activeCurrent.classList.remove("photoSlider_active");
       current++;
@@ -30,6 +34,9 @@ function initSlider(id) {
     });
   });
   prev.forEach((item) => {
+    item.addEventListener("dblclick", (event) => {
+      event.stopPropagation();
+    });
     item.addEventListener("click", () => {
       activeCurrent.classList.remove("photoSlider_active");
       current--;

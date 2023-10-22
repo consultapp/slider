@@ -5,13 +5,18 @@
   top: 0;
   bottom: 0;
   background-color: white;
-  z-index: 2;
+  z-index: 1000;
   opacity: 0;
   display: flex;
   justify-content: center;
   align-items: stretch;
   transform: translate(-100vw);
   transition: opacity 500ms linear;
+}
+.modalSlider * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .modalSlider[data-open] {
   transform: translate(0);
@@ -66,6 +71,11 @@
   flex-direction: column;
   gap: 20px;
   max-width: 363px;
+}
+.photoSlider * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 .photoSlider__mainPhotoWrapper {
   position: relative;
