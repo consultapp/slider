@@ -66,6 +66,20 @@
   }
 }
 
+.loupe {
+  background-color: white;
+  color: black;
+  overflow: hidden;
+  background-position: -100% -100%;
+  background-repeat: no-repeat;
+}
+.loupe:hover {
+  cursor: url("/assets/loupe.svg"), auto;
+}
+.loupe:hover img {
+  opacity: 0;
+}
+
 .photoSlider {
   display: flex;
   flex-direction: column;
@@ -77,17 +91,10 @@
   -moz-user-select: none;
   -ms-user-select: none;
 }
-.photoSlider__mainPhotoWrapper {
+.photoSlider_mainPhotoWrapper {
   position: relative;
-  background-color: white;
   overflow: hidden;
   min-height: 400px;
-}
-.photoSlider__mainPhotoWrapper:hover {
-  cursor: url("/assets/loupe.svg"), auto;
-}
-.photoSlider__mainPhotoWrapper:hover img {
-  position: absolute;
 }
 .photoSlider__mainPhoto {
   transform-origin: center;

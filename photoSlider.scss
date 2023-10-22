@@ -2,7 +2,8 @@ $gray-light: #f7f4f4;
 $white: white;
 $black: black;
 
-@import "./modalSlider.scss";
+@import './modalSlider.scss';
+@import './loupe.scss';
 
 .photoSlider {
   display: flex;
@@ -16,18 +17,12 @@ $black: black;
     -ms-user-select: none;
   }
 
-  &__mainPhotoWrapper {
+  &_mainPhotoWrapper {
     position: relative;
-    background-color: $white;
     overflow: hidden;
     min-height: 400px;
-    &:hover {
-      cursor: url("/assets/loupe.svg"), auto;
-      & img {
-        position: absolute;
-      }
-    }
   }
+
   &__mainPhoto {
     transform-origin: center;
   }
