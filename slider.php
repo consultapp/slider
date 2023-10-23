@@ -164,3 +164,41 @@ function makeModalSlider($photos, $name){
     return $result;
 }
 ?>
+
+<?
+
+function MakeParametersIcon($data,$foto) {
+	
+	$ico.='<div style="padding-top: 10px" class="techs">';
+
+	$list = explode(',', $data);
+	
+	if (!empty($data)){
+
+	foreach ($list as $key => $value) {
+		
+		if (!empty($value)){
+			$val[]=' b.id="'.$value.'" AND b.ico_file LIKE "ico_%"';
+		}
+	}
+	
+	$xxx.=' WHERE '.implode(' OR ', $val).' ';
+	
+	$good=DbQueryToArray ('SELECT b.ico_name, b.ico_file FROM `tsd_charact_sku` b '.$xxx.' ORDER BY b.name');							
+	
+		
+	foreach ($good as $row){
+		 
+		if(!empty($row['ico_file'])) {
+			
+			$ico.='<span class="tooltip" data-tooltip="'.$row['ico_name'].'"><img src="/images/'.$row['ico_file'].'" height="41" alt="'.$row['ico_name'].'"></span>';
+			
+		}
+	}
+	}
+	
+	$ico.='</div>';
+
+	return $ico;
+}
+?>
