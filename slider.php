@@ -137,15 +137,17 @@ function makeModalSlider($photos, $name){
             <div class="photoSlider__line">
               <div class="photoSlider__slider">
                 <div class="photoSlider__thumbnailWrapper">';
+                $flag=true;
                 foreach ($photos as $photo) {
                     $result.=' <img
                         alt="'.$name.'"
                         src="'.$photo.'"
                         width="70px"
                         height="70px"
-                        class="photoSlider__thumbnail photoSlider_active"
+                        class="photoSlider__thumbnail '. $flag? 'photoSlider_active' : '' .'"
                         data-image="'.$photo.'"
                     />';
+                    $flag = false;
                 }
                   $result.=' </div>
               </div>

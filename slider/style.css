@@ -1,3 +1,9 @@
+body[data-open] {
+  height: 100vh;
+  overflow-y: hidden;
+  padding-right: 15px; /* Avoid width reflow */
+}
+
 .modalSlider {
   position: fixed;
   left: 0;

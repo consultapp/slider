@@ -4,10 +4,12 @@ window.addEventListener("load", () => {
 
   document.getElementById("closeModalBtn").addEventListener("click", () => {
     modal.removeAttribute("data-open");
+    document.body.removeAttribute("data-open");
   });
   openers.forEach((item) => {
     item.addEventListener("click", () => {
       modal.setAttribute("data-open", "");
+      document.body.setAttribute("data-open", "");
     });
   });
 });
