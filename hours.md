@@ -4,3 +4,4 @@ animations+btn: 0.5h
 modal: 1.5h
 loupe: 1h
 fixes: 1h
+php+struct updates:1h

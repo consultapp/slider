@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./slider.js"></script>
-    <script src="./loupe.js"></script>
-    <script src="./modalSlider.js"></script>
-    <link href="./photoSlider.css" rel="stylesheet" type="text/css" />
+    <script src="./slider/slider.js"></script>
+    <script src="./slider/loupe.js"></script>
+    <script src="./slider/modalSlider.js"></script>
+    <link href="./slider/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="modalSlider" id="modalSlider">
@@ -15,16 +15,16 @@
         id="closeModalBtn"
         fill="#000000"
         class="modalSlider__closeButton"
-        height="40px"
-        width="40px"
+        height="20"
+        width="20"
       >
-        <use href="/assets/sprites.svg#close2" />
+        <use href="/slider/assets/sprites.svg#close2" />
       </svg>
 
       <div class="modalSlider__container">
         <div class="modalSlider__prevBtn prevBtn">
-          <svg width="40px" height="40px" viewBox="0 0 24 24">
-            <use href="/assets/sprites.svg#next" />
+          <svg width="20px" height="20px" viewBox="0 0 24 24">
+            <use href="/slider/assets/sprites.svg#next" />
           </svg>
         </div>
         <div class="modalSlider__wrapper">
@@ -143,8 +143,8 @@
           </div>
         </div>
         <div class="modalSlider__nextBtn nextBtn">
-          <svg width="40px" height="40px" viewBox="0 0 24 24">
-            <use href="/assets/sprites.svg#next" />
+          <svg width="20px" height="20px" viewBox="0 0 24 24">
+            <use href="/slider/assets/sprites.svg#next" />
           </svg>
         </div>
       </div>
@@ -164,7 +164,7 @@
       <div class="photoSlider__line">
         <div class="photoSlider__iconsWrapper prevBtn">
           <svg width="24" height="24" class="photoSlider__icons">
-            <use href="/assets/sprites.svg#next" />
+            <use href="/slider/assets/sprites.svg#next" />
           </svg>
         </div>
         <div class="photoSlider__slider">
@@ -270,16 +270,16 @@
         </div>
         <div class="photoSlider__iconsWrapper nextBtn">
           <svg width="24" height="24" class="photoSlider__icons">
-            <use href="/assets/sprites.svg#next" />
+            <use href="/slider/assets/sprites.svg#next" />
           </svg>
         </div>
       </div>
     </div>
     <script type="module">
-      window.addEventListener('load', () => {
-        initSlider('#innerSlider')
-        initSlider('#modalSlider')
-      })
+      window.addEventListener("load", () => {
+        initSlider("#innerSlider");
+        initSlider("#modalSlider");
+      });
     </script>
   </body>
 </html>
