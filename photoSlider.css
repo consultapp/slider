@@ -40,14 +40,16 @@
 .modalSlider__prevBtn {
   transform: rotate(180deg);
 }
-.modalSlider__prevBtn, .modalSlider__nextBtn {
+.modalSlider__prevBtn,
+.modalSlider__nextBtn {
   min-width: 70px;
   align-self: stretch;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.modalSlider__prevBtn:hover svg, .modalSlider__nextBtn:hover svg {
+.modalSlider__prevBtn:hover svg,
+.modalSlider__nextBtn:hover svg {
   transform: translate(10px);
   transition: transform 200ms linear;
 }
@@ -106,7 +108,8 @@
 }
 .techs img {
   border: 1px solid #92959c;
-  height: 38px;
+  width: 45px;
+  height: 45px;
   border-radius: 5px;
 }
 .techs img:hover {
