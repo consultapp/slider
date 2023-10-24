@@ -1,4 +1,4 @@
-$btnWidth: "70px";
+$btnWidth: '40px';
 
 body[data-open] {
   height: 100vh;
@@ -71,13 +71,22 @@ body[data-open] {
       }
     }
   }
-
+  &__leftWrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+  }
   &_innerWidth {
     width: calc((100vw) - #{$btnWidth} - #{$btnWidth});
     max-width: 600px !important;
     height: 600px;
     background-color: $white !important;
     border-radius: 5px;
+    border: 1px solid $white !important;
+  }
+
+  &_bg {
+    background-color: $white !important;
     border: 1px solid $white !important;
   }
 

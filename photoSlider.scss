@@ -1,10 +1,11 @@
 $gray-light: #d6d7d8;
 $white: white;
 $black: black;
+$columnWidth: '100px';
 
-@import "./modalSlider.scss";
-@import "./loupe.scss";
-@import "./techs.scss";
+@import './modalSlider.scss';
+@import './loupe.scss';
+@import './techs.scss';
 
 .photoSlider {
   display: flex;
@@ -24,6 +25,8 @@ $black: black;
   &_mainPhotoWrapper {
     position: relative;
     overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
     min-height: 400px;
   }
 
@@ -53,6 +56,46 @@ $black: black;
     align-items: stretch;
     margin: 10px 0 10px 0;
   }
+
+  &__column {
+    display: flex;
+    gap: 5px;
+    align-items: stretch;
+    flex-direction: column;
+    margin: 0 10px 0 10px;
+    & .photoSlider__slider {
+      min-width: #{$columnWidth};
+      min-height: 50vh;
+    }
+    & .photoSlider__thumbnailWrapper {
+      flex-direction: column;
+      transform: translateY(0);
+      @media screen and (min-width: 380px) {
+        & {
+          overflow-y: hidden;
+        }
+      }
+    }
+    & .photoSlider__thumbnail {
+      width: #{$columnWidth};
+      height: #{$columnWidth};
+    }
+    & .photoSlider__icons {
+      transform: rotate(90deg);
+    }
+    & .photoSlider__iconsWrapper {
+      &:hover {
+        & svg {
+          transform: translateY(5px) rotate(90deg);
+          transition: transform 200ms linear;
+        }
+      }
+    }
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
   &__thumbnail {
     box-sizing: border-box;
     border: 1px solid $white;
@@ -70,10 +113,8 @@ $black: black;
     display: flex;
     justify-content: center;
     border-radius: 8px;
-    transition: background-color 0.4s linear;
 
     &:hover {
-      background-color: $gray-light;
       & svg {
         transform: translate(3px);
         transition: transform 200ms linear;

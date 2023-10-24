@@ -31,7 +31,7 @@ body[data-open] {
 }
 .modalSlider__closeButton {
   position: absolute;
-  right: calc(25px + 70px);
+  right: calc(25px + 40px);
   top: 25px;
   transition: transform 200ms ease-out;
 }
@@ -48,7 +48,7 @@ body[data-open] {
   transform: rotate(180deg);
 }
 .modalSlider__prevBtn, .modalSlider__nextBtn {
-  min-width: 70px;
+  min-width: 40px;
   align-self: stretch;
   display: flex;
   justify-content: center;
@@ -58,12 +58,21 @@ body[data-open] {
   transform: translate(10px);
   transition: transform 200ms linear;
 }
+.modalSlider__leftWrapper {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
 .modalSlider_innerWidth {
-  width: calc(100vw - 70px - 70px);
+  width: calc(100vw - 40px - 40px);
   max-width: 600px !important;
   height: 600px;
   background-color: white !important;
   border-radius: 5px;
+  border: 1px solid white !important;
+}
+.modalSlider_bg {
+  background-color: white !important;
   border: 1px solid white !important;
 }
 @media (max-width: 400px) {
@@ -138,6 +147,8 @@ body[data-open] {
 .photoSlider_mainPhotoWrapper {
   position: relative;
   overflow: hidden;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   min-height: 400px;
 }
 .photoSlider__mainPhoto {
@@ -164,6 +175,42 @@ body[data-open] {
   align-items: stretch;
   margin: 10px 0 10px 0;
 }
+.photoSlider__column {
+  display: flex;
+  gap: 5px;
+  align-items: stretch;
+  flex-direction: column;
+  margin: 0 10px 0 10px;
+}
+.photoSlider__column .photoSlider__slider {
+  min-width: 100px;
+  min-height: 50vh;
+}
+.photoSlider__column .photoSlider__thumbnailWrapper {
+  flex-direction: column;
+  transform: translateY(0);
+}
+@media screen and (min-width: 380px) {
+  .photoSlider__column .photoSlider__thumbnailWrapper {
+    overflow-y: hidden;
+  }
+}
+.photoSlider__column .photoSlider__thumbnail {
+  width: 100px;
+  height: 100px;
+}
+.photoSlider__column .photoSlider__icons {
+  transform: rotate(90deg);
+}
+.photoSlider__column .photoSlider__iconsWrapper:hover svg {
+  transform: translateY(5px) rotate(90deg);
+  transition: transform 200ms linear;
+}
+@media screen and (max-width: 768px) {
+  .photoSlider__column {
+    display: none;
+  }
+}
 .photoSlider__thumbnail {
   box-sizing: border-box;
   border: 1px solid white;
@@ -181,10 +228,6 @@ body[data-open] {
   display: flex;
   justify-content: center;
   border-radius: 8px;
-  transition: background-color 0.4s linear;
-}
-.photoSlider__iconsWrapper:hover {
-  background-color: #d6d7d8;
 }
 .photoSlider__iconsWrapper:hover svg {
   transform: translate(3px);
