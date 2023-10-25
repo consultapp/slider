@@ -5,7 +5,7 @@
   background-position: -100% -100%;
   background-repeat: no-repeat;
   &:hover {
-    cursor: url('/assets/loupe.svg'), auto;
+    cursor: zoom-in;
     & img {
       opacity: 0;
     }

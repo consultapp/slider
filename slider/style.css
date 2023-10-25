@@ -89,7 +89,7 @@ body[data-open] {
   background-repeat: no-repeat;
 }
 .loupe:hover {
-  cursor: url("/assets/loupe.svg"), auto;
+  cursor: zoom-in;
 }
 .loupe:hover img {
   opacity: 0;
