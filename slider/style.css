@@ -188,6 +188,7 @@ body[data-open] {
 }
 .photoSlider__column .photoSlider__thumbnailWrapper {
   flex-direction: column;
+  top: 0;
   transform: translateY(0);
 }
 @media screen and (min-width: 380px) {

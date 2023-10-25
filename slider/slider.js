@@ -1,7 +1,6 @@
-function initSlider(id) {
+function initSlider(id, v = false) {
   console.log("id", id + id ? " " : "" + ".nextBtn");
   console.log("document", document);
-  // window.addEventListener("load", () => {
   const next = document.querySelectorAll(`${id} .nextBtn`);
   const prev = document.querySelectorAll(id + " .prevBtn");
   const slider = document.querySelector(id + " .photoSlider__slider");
@@ -12,6 +11,7 @@ function initSlider(id) {
   let currentWPShift = 0;
   let current = 0;
   let activeCurrent = images[current];
+  const vertical = v;
 
   next.forEach((item) => {
     item.addEventListener("dblclick", (event) => {
@@ -73,7 +73,7 @@ function initSlider(id) {
   }
 
   function moveImageWrapper(shift) {
-    wp.style.transform = `translateX(${shift}px)`;
+    wp.style.transform = `translate${vertical ? "Y" : "X"}(${shift}px)`;
   }
 
   function selectPhoto(image) {
@@ -82,21 +82,43 @@ function initSlider(id) {
   }
 
   function adjustImageIfNeed(currentWPShift) {
-    if (
-      slider.clientWidth <
-      activeCurrent.offsetLeft + activeCurrent.width + currentWPShift
-    ) {
-      const shiftFromSliderStart =
-        activeCurrent.offsetLeft -
-        Math.abs(currentWPShift) +
-        activeCurrent.width;
-      const needShift = slider.clientWidth - shiftFromSliderStart;
-      currentWPShift += needShift - 2;
-    }
-    if (activeCurrent.offsetLeft < Math.abs(currentWPShift)) {
-      currentWPShift += Math.abs(currentWPShift) - activeCurrent.offsetLeft;
+    if (!vertical) {
+      if (
+        slider.clientWidth <
+        activeCurrent.offsetLeft + activeCurrent.width + currentWPShift
+      ) {
+        const shiftFromSliderStart =
+          activeCurrent.offsetLeft -
+          Math.abs(currentWPShift) +
+          activeCurrent.width;
+        const needShift = slider.clientWidth - shiftFromSliderStart;
+        currentWPShift += needShift - 2;
+      }
+      if (activeCurrent.offsetLeft < Math.abs(currentWPShift)) {
+        currentWPShift += Math.abs(currentWPShift) - activeCurrent.offsetLeft;
+      }
+    } else {
+      console.log("vertical", vertical);
+      currentWPShift = adjustImageIfNeedVertical(currentWPShift);
     }
     return currentWPShift;
   }
-  // });
+
+  function adjustImageIfNeedVertical(currentWPShift) {
+    if (
+      slider.clientHeight <
+      activeCurrent.offsetTop + activeCurrent.height + currentWPShift
+    ) {
+      const shiftFromSliderStart =
+        activeCurrent.offsetTop -
+        Math.abs(currentWPShift) +
+        activeCurrent.height;
+      const needShift = slider.clientHeight - shiftFromSliderStart;
+      currentWPShift += needShift - 2;
+    }
+    if (activeCurrent.offsetTop < Math.abs(currentWPShift)) {
+      currentWPShift += Math.abs(currentWPShift) - activeCurrent.offsetTop;
+    }
+    return currentWPShift;
+  }
 }
