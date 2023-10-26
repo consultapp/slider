@@ -43,8 +43,6 @@ function initSlider(id, v = false) {
       if (current < 0) {
         current = images.length - 1;
         activeCurrent = images[current];
-        //   currentWPShift =
-        //     slider.clientWidth - activeCurrent.offsetLeft - activeCurrent.width - 2;
       } else {
         activeCurrent = images[current];
       }
@@ -57,6 +55,11 @@ function initSlider(id, v = false) {
   for (const item of images) {
     item.addEventListener("click", (e) => {
       activeCurrent.classList.remove("photoSlider_active");
+      images.forEach((item, i) => {
+        if (item === e.target) {
+          current = i;
+        }
+      });
       activeCurrent = e.target;
       let i = 0;
       for (const item1 of images) {

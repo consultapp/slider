@@ -83,16 +83,21 @@ body[data-open] {
 
 .loupe {
   background-color: white;
-  color: black;
-  overflow: hidden;
-  background-position: -100% -100%;
-  background-repeat: no-repeat;
 }
-.loupe:hover {
-  cursor: zoom-in;
-}
-.loupe:hover img {
-  opacity: 0;
+@media screen and (min-width: 768px) {
+  .loupe {
+    background-color: white;
+    color: black;
+    overflow: hidden;
+    background-position: -100% -100%;
+    background-repeat: no-repeat;
+  }
+  .loupe:hover {
+    cursor: zoom-in;
+  }
+  .loupe:hover img {
+    opacity: 0;
+  }
 }
 
 .tooltip {

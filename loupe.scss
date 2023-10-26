@@ -1,13 +1,16 @@
 .loupe {
   background-color: $white;
-  color: black;
-  overflow: hidden;
-  background-position: -100% -100%;
-  background-repeat: no-repeat;
-  &:hover {
-    cursor: zoom-in;
-    & img {
-      opacity: 0;
+  @media screen and (min-width: 768px) {
+    background-color: $white;
+    color: black;
+    overflow: hidden;
+    background-position: -100% -100%;
+    background-repeat: no-repeat;
+    &:hover {
+      cursor: zoom-in;
+      & img {
+        opacity: 0;
+      }
     }
   }
 }
