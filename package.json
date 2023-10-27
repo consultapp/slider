@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.html",
   "scripts": {
-    "sass": "sass -w photoSlider.scss ./slider/style.css"
+    "sass": "sass -w pageSlider.scss ./slider/style.css"
   },
   "repository": {
     "type": "git",
