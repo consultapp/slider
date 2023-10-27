@@ -1,11 +1,11 @@
 window.addEventListener("load", () => {
   const loupe = document.querySelector(".loupe");
-  const photo = loupe.firstElementChild();
-
+  const photo = loupe.firstElementChild;
+  console.dir(photo);
   if (window.screen.width > 768) {
-    console.log("desctop loupe");
     loupe.addEventListener("mouseenter", () => {
       loupe.style.background = `url(${photo.src})`;
+      loupe.style.backgroundRepeat = "no-repeat";
     });
 
     loupe.addEventListener("mousemove", (e) => {

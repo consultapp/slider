@@ -1,6 +1,4 @@
 function initSlider(id, v = false) {
-  console.log("id", id + id ? " " : "" + ".nextBtn");
-  console.log("document", document);
   const next = document.querySelectorAll(`${id} .nextBtn`);
   const prev = document.querySelectorAll(id + " .prevBtn");
   const slider = document.querySelector(id + " .photoSlider__slider");
@@ -101,7 +99,6 @@ function initSlider(id, v = false) {
         currentWPShift += Math.abs(currentWPShift) - activeCurrent.offsetLeft;
       }
     } else {
-      console.log("vertical", vertical);
       currentWPShift = adjustImageIfNeedVertical(currentWPShift);
     }
     return currentWPShift;
