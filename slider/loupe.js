@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
-  const photo = document.querySelector("#innerSlider .photoSlider__mainPhoto");
-  const loupe = document.querySelector("#innerSlider .loupe");
+  const loupe = document.querySelector(".loupe");
+  const photo = loupe.firstElementChild();
 
   if (window.screen.width > 768) {
     console.log("desctop loupe");
