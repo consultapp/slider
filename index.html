@@ -5682,10 +5682,15 @@
     </div>
 
     <script type="module">
-      window.addEventListener("load", () => {
+      // window.addEventListener("load", () => {
+      //   initSlider("#innerSlider");
+      //   initSlider("#modalSlider", true);
+      // });
+
+      (() => {
         initSlider("#innerSlider");
         initSlider("#modalSlider", true);
-      });
+      })();
     </script>
   </body>
 </html>
