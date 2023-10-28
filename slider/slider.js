@@ -1,124 +1,130 @@
-function initSlider(id, v = false) {
-  const next = document.querySelectorAll(`${id} .nextBtn`);
-  const prev = document.querySelectorAll(id + " .prevBtn");
-  const slider = document.querySelector(id + " .photoSlider__slider");
-  const images = document.querySelectorAll(id + " .photoSlider__thumbnail");
-  const mainPhoto = document.querySelector(id + " .photoSlider__mainPhoto");
-  const wp = document.querySelector(id + " .photoSlider__thumbnailWrapper");
+class CASlider {
+  currentWPShift = 0;
+  current = 0;
+  smallAddShiftForGoodlooking = 2;
+  pointerDownFlag = false;
 
-  let currentWPShift = 0;
-  let current = 0;
-  let activeCurrent = images[current];
-  const vertical = v;
+  constructor(id, v = false) {
+    this.next = document.querySelectorAll(`${id} .nextBtn`);
+    this.prev = document.querySelectorAll(id + " .prevBtn");
+    this.slider = document.querySelector(id + " .photoSlider__slider");
+    this.images = document.querySelectorAll(id + " .photoSlider__thumbnail");
+    this.mainPhoto = document.querySelector(id + " .photoSlider__mainPhoto");
+    this.thumbnailWrapper = document.querySelector(
+      id + " .photoSlider__thumbnailWrapper",
+    );
+    this.activeImage = this.images[this.current];
+    this.vertical = v;
 
-  next.forEach((item) => {
-    item.addEventListener("dblclick", (event) => {
-      event.stopPropagation();
-    });
+    this.init();
+  }
 
-    item.addEventListener("click", () => {
-      activeCurrent.classList.remove("photoSlider_active");
-      current++;
-      if (current > images.length - 1) {
-        current = 0;
-        activeCurrent = images[current];
-        currentWPShift = 0;
-      } else {
-        activeCurrent = images[current];
-      }
-      currentWPShift = adjustImageIfNeed(currentWPShift);
-      selectPhoto(activeCurrent);
-      moveImageWrapper(currentWPShift);
-    });
-  });
-  prev.forEach((item) => {
-    item.addEventListener("dblclick", (event) => {
-      event.stopPropagation();
-    });
-    item.addEventListener("click", () => {
-      activeCurrent.classList.remove("photoSlider_active");
-      current--;
-      if (current < 0) {
-        current = images.length - 1;
-        activeCurrent = images[current];
-      } else {
-        activeCurrent = images[current];
-      }
-      currentWPShift = adjustImageIfNeed(currentWPShift);
-      selectPhoto(activeCurrent);
-      moveImageWrapper(currentWPShift);
-    });
-  });
-
-  for (const item of images) {
-    item.addEventListener("click", (e) => {
-      activeCurrent.classList.remove("photoSlider_active");
-      images.forEach((item, i) => {
-        if (item === e.target) {
-          current = i;
-        }
+  init() {
+    this.next.forEach((item) => {
+      item.addEventListener("dblclick", (event) => {
+        event.stopPropagation();
       });
-      activeCurrent = e.target;
-      let i = 0;
-      for (const item1 of images) {
-        i++;
-        if (current.src === item1.src) {
-          current = i;
-          break;
-        }
-      }
-      selectPhoto(activeCurrent);
-      currentWPShift = adjustImageIfNeed(currentWPShift);
-      moveImageWrapper(currentWPShift);
+
+      item.addEventListener("pointerdown", () => {
+        this.pointerDownFlag = true;
+        this.switchImage({ next: true });
+      });
     });
-  }
 
-  function moveImageWrapper(shift) {
-    wp.style.transform = `translate${vertical ? "Y" : "X"}(${shift}px)`;
-  }
+    this.prev.forEach((item) => {
+      item.addEventListener("dblclick", (event) => {
+        event.stopPropagation();
+      });
+      item.addEventListener("pointerdown", () => {
+        this.pointerDownFlag = true;
+        this.switchImage({ prev: true });
+      });
+    });
 
-  function selectPhoto(image) {
-    image.classList.add("photoSlider_active");
-    mainPhoto.src = image.src;
-  }
-
-  function adjustImageIfNeed(currentWPShift) {
-    if (!vertical) {
-      if (
-        slider.clientWidth <
-        activeCurrent.offsetLeft + activeCurrent.width + currentWPShift
-      ) {
-        const shiftFromSliderStart =
-          activeCurrent.offsetLeft -
-          Math.abs(currentWPShift) +
-          activeCurrent.width;
-        const needShift = slider.clientWidth - shiftFromSliderStart;
-        currentWPShift += needShift - 2;
-      }
-      if (activeCurrent.offsetLeft < Math.abs(currentWPShift)) {
-        currentWPShift += Math.abs(currentWPShift) - activeCurrent.offsetLeft;
-      }
-    } else {
-      currentWPShift = adjustImageIfNeedVertical(currentWPShift);
+    for (const item of this.images) {
+      item.addEventListener("pointerdown", (e) => {
+        this.pointerDownFlag = true;
+        this.images.forEach((item, i) => {
+          if (item === e.target) {
+            this.selectPhoto(i);
+          }
+        });
+        this.adjustImageIfNeed();
+      });
     }
-    return currentWPShift;
   }
 
-  function adjustImageIfNeedVertical(currentWPShift) {
+  switchImage({ next, prev }) {
+    if (next) this.current++;
+    if (prev) this.current--;
+    if (this.current < 0) {
+      this.selectPhoto(this.images.length - 1);
+    } else if (this.current > this.images.length - 1) {
+      this.selectPhoto(0);
+      this.currentWPShift = 0;
+    } else {
+      this.selectPhoto(this.current);
+    }
+    this.adjustImageIfNeed();
+  }
+
+  // by index - current
+  selectPhoto(index = this.current) {
+    this.current = index;
+    if (this.activeImage && this.activeImage.classList)
+      this.activeImage.classList.remove("photoSlider_active");
+    this.activeImage = this.images[this.current];
+    this.activeImage.classList.add("photoSlider_active");
+    this.mainPhoto.src = this.activeImage.src;
+  }
+
+  adjustImageIfNeed() {
+    if (this.vertical) this.adjustImageY();
+    else this.adjustImageX();
+
+    this.moveImageWrapper();
+  }
+  adjustImageX() {
     if (
-      slider.clientHeight <
-      activeCurrent.offsetTop + activeCurrent.height + currentWPShift
+      this.slider.clientWidth <
+      this.activeImage.offsetLeft + this.activeImage.width + this.currentWPShift
     ) {
       const shiftFromSliderStart =
-        activeCurrent.offsetTop -
-        Math.abs(currentWPShift) +
-        activeCurrent.height;
-      const needShift = slider.clientHeight - shiftFromSliderStart;
-      currentWPShift += needShift - 2;
+        this.activeImage.offsetLeft -
+        Math.abs(this.currentWPShift) +
+        this.activeImage.width;
+      const needShift = this.slider.clientWidth - shiftFromSliderStart;
+      this.currentWPShift += needShift - this.smallAddShiftForGoodlooking;
     }
-    if (activeCurrent.offsetTop < Math.abs(currentWPShift)) {
-      currentWPShift += Math.abs(currentWPShift) - activeCurrent.offsetTop;
+    if (this.activeImage.offsetLeft < Math.abs(this.currentWPShift)) {
+      this.currentWPShift +=
+        Math.abs(this.currentWPShift) - this.activeImage.offsetLeft;
     }
-    return currentWPShift;
+  }
+
+  adjustImageY() {
+    if (
+      this.slider.clientHeight <
+      this.activeImage.offsetTop + this.activeImage.height + this.currentWPShift
+    ) {
+      const shiftFromSliderStart =
+        this.activeImage.offsetTop -
+        Math.abs(this.currentWPShift) +
+        this.activeImage.height;
+      const needShift = this.slider.clientHeight - shiftFromSliderStart;
+      this.currentWPShift += needShift - this.smallAddShiftForGoodlooking;
+    }
+    if (this.activeImage.offsetTop < Math.abs(this.currentWPShift)) {
+      this.currentWPShift +=
+        Math.abs(this.currentWPShift) - this.activeImage.offsetTop;
+    }
+    return this.currentWPShift;
+  }
+
+  moveImageWrapper(shift = this.currentWPShift) {
+    this.currentWPShift = shift;
+    this.thumbnailWrapper.style.transform = `translate${
+      this.vertical ? "Y" : "X"
+    }(${shift}px)`;
   }
 }

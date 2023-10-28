@@ -1,7 +1,7 @@
 window.addEventListener("load", () => {
   const loupe = document.querySelector(".loupe");
   const photo = loupe.firstElementChild;
-  console.dir(photo);
+
   if (window.screen.width > 768) {
     loupe.addEventListener("mouseenter", () => {
       loupe.style.background = `url(${photo.src})`;
