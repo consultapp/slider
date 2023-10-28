@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./slider/slider.js"></script>
-    <script src="./slider/loupe.js"></script>
-    <script src="./slider/modalSlider.js"></script>
+    <!-- <script src="./slider/modalSlider.js"></script> -->
     <link href="./slider/style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -15,7 +14,7 @@
         max-width: 400px;
       }
     </style>
-    <div class="modalSlider" id="modalSlider" data-open>
+    <div class="modalSlider" id="modalSlider">
       <svg
         id="closeModalBtn"
         fill="#000000"
@@ -283,8 +282,8 @@
     </div>
     <script type="module">
       window.addEventListener("load", () => {
-        const inner = new CASlider("#innerSlider");
-        const modal = new CASlider("#modalSlider", true);
+        const inner = new CASlider();
+        const modal = new CASlider({ modalId: "modalSlider", vertical: true });
       });
     </script>
   </body>
