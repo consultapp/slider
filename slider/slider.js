@@ -5,13 +5,13 @@ class CASlider {
   pointerDownFlag = false;
 
   constructor(id, v = false) {
-    this.next = document.querySelectorAll(`${id} .nextBtn`);
+    this.next = document.querySelectorAll(id + " .nextBtn");
     this.prev = document.querySelectorAll(id + " .prevBtn");
-    this.slider = document.querySelector(id + " .photoSlider__slider");
-    this.images = document.querySelectorAll(id + " .photoSlider__thumbnail");
-    this.mainPhoto = document.querySelector(id + " .photoSlider__mainPhoto");
+    this.slider = document.querySelector(id + " .innerSlider__slider");
+    this.images = document.querySelectorAll(id + " .innerSlider__thumbnail");
+    this.mainPhoto = document.querySelector(id + " .innerSlider__mainPhoto");
     this.thumbnailWrapper = document.querySelector(
-      id + " .photoSlider__thumbnailWrapper",
+      id + " .innerSlider__thumbnailWrapper",
     );
     this.activeImage = this.images[this.current];
     this.vertical = v;
@@ -45,9 +45,7 @@ class CASlider {
       item.addEventListener("pointerdown", (e) => {
         this.pointerDownFlag = true;
         this.images.forEach((item, i) => {
-          if (item === e.target) {
-            this.selectPhoto(i);
-          }
+          if (item === e.target) this.selectPhoto(i);
         });
         this.adjustImageIfNeed();
       });
@@ -72,9 +70,9 @@ class CASlider {
   selectPhoto(index = this.current) {
     this.current = index;
     if (this.activeImage && this.activeImage.classList)
-      this.activeImage.classList.remove("photoSlider_active");
+      this.activeImage.removeAttribute("data-active");
     this.activeImage = this.images[this.current];
-    this.activeImage.classList.add("photoSlider_active");
+    this.activeImage.setAttribute("data-active", "");
     this.mainPhoto.src = this.activeImage.src;
   }
 

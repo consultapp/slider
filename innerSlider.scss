@@ -6,7 +6,7 @@ $columnWidth: "100px";
 @import "./modalSlider.scss";
 @import "./loupe.scss";
 
-.photoSlider {
+.innerSlider {
   display: flex;
   flex-direction: column;
   // gap: 20px;
@@ -62,11 +62,11 @@ $columnWidth: "100px";
     align-items: stretch;
     flex-direction: column;
     margin: 0 10px 0 10px;
-    & .photoSlider__slider {
+    & .innerSlider__slider {
       min-width: #{$columnWidth};
       min-height: 50vh;
     }
-    & .photoSlider__thumbnailWrapper {
+    & .innerSlider__thumbnailWrapper {
       flex-direction: column;
       top: 0;
       transform: translateY(0);
@@ -76,14 +76,14 @@ $columnWidth: "100px";
         }
       }
     }
-    & .photoSlider__thumbnail {
+    & .innerSlider__thumbnail {
       width: #{$columnWidth};
       height: #{$columnWidth};
     }
-    & .photoSlider__icons {
+    & .innerSlider__icons {
       transform: rotate(90deg);
     }
-    & .photoSlider__iconsWrapper {
+    & .innerSlider__iconsWrapper {
       &:hover {
         & svg {
           transform: translateY(5px) rotate(90deg);
@@ -121,16 +121,18 @@ $columnWidth: "100px";
       }
     }
   }
-  .photoSlider_active {
+  & [data-active] {
     border: 1px solid $black;
     border-width: 1px;
   }
+
+  &__iconsWrapper.prevBtn {
+    transform: rotate(180deg);
+  }
+
   @media screen and (min-width: 380px) {
     &__thumbnailWrapper {
       overflow-x: hidden;
     }
   }
-}
-.photoSlider__iconsWrapper.prevBtn {
-  transform: rotate(180deg);
 }
