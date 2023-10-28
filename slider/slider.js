@@ -6,7 +6,8 @@ class CASlider {
 
   initialState = {
     innerId: "innerSlider",
-    modalId: "",
+    modalId: "modalSlider",
+    mode: "inner",
     vertical: false,
     nextBtnSelector: ".nextBtn",
     prevBtnSelector: ".prevBtn",
@@ -17,8 +18,10 @@ class CASlider {
     thumbnailWrapperSelector: ".innerSlider__thumbnailWrapper",
   };
 
-  constructor(initial = this.initialState) {
-    this.sliderId = initial.modalId ? initial.modalId : initial.innerId;
+  constructor(initial) {
+    initial = { ...this.initialState, ...initial };
+    this.sliderId =
+      initial.mode === "modal" ? initial.modalId : initial.innerId;
 
     this.next = document.querySelectorAll(
       `#${this.sliderId} ${initial.nextBtnSelector}`,
@@ -41,8 +44,9 @@ class CASlider {
     this.activeImage = this.images[this.current];
     this.vertical = initial.vertical;
 
+    console.log("initial", initial);
     this.init();
-    if (initial.modalId) this.initModal();
+    if (initial.mode === "modal") this.initModal();
     this.initLoupe(`#${this.sliderId} ${initial.loupeSelector}`);
   }
 
@@ -81,6 +85,7 @@ class CASlider {
 
   initLoupe(selector) {
     const loupe = document.querySelector(selector);
+    console.log("loupe", loupe);
     if (loupe) {
       const photo = loupe.firstElementChild;
       if (photo) {
@@ -108,6 +113,7 @@ class CASlider {
 
   initModal() {
     this.modal = document.getElementById(this.sliderId);
+    console.log("this.modal", this.modal, this.sliderId);
     if (this.modal) {
       const openers = document.querySelectorAll(`[data-modal-opener]`);
       if (openers && openers.length) {
