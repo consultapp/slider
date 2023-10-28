@@ -1,10 +1,10 @@
 $gray-light: white;
 $white: white;
 $black: black;
-$columnWidth: "100px";
+$columnWidth: '100px';
 
-@import "./modalSlider.scss";
-@import "./loupe.scss";
+@import './modalSlider.scss';
+@import './loupe.scss';
 
 .innerSlider {
   display: flex;
